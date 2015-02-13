@@ -1,0 +1,67 @@
+%%%%%%%%%%%%%% Template for APA6 %%%%%%%%%%%%%%%%%%
+%% fontsize can be 10pt, 11pt or 12pt
+%% lang -> babel with lang is passed to APA6, verified only with "american"
+%% papersize default is letter, specify a4paper in YAML if desired
+%% other classoptions are specified in list format in YAML
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$babel,$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+%\usepackage[american]{babel}
+%\usepackage{multirow}
+%\usepackage{mathtools}
+%\usepackage{color}
+%\input{rgb}
+\usepackage{amssymb,amsmath}
+%\usepackage{fancyhdr}
+
+\usepackage{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{$lang$}{$lang$-apa}
+
+%Un/comment the following lines to remove the Running head on the title page
+%\fancypagestyle{titlepage}{%
+%  \lhead{$shorttitle$}%
+%  \rhead{\thepage}%
+%}
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% This material needs to be reviewed and changed.
+%\bibliography{$biblio-files$}
+\addbibresource{$bibliography$} % This creates problems when bibfiles are nested in a folder also does not automatically add the .bib extension
+
+\title{$title$}
+
+\author{$author$}
+
+%$affiliations$
+\affiliation{$affiliation$}			
+
+%\leftheader{$shorttitle$} %This is set to the shorttitle text but could easily be substituted.
+
+\shorttitle{$shorttitle$}
+
+\abstract{$abstract$}
+
+\keywords{$keywords$}
+
+\begin{document}
+\maketitle
+$body$
+\printbibliography
+\end{document}

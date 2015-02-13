@@ -1,0 +1,41 @@
+---
+title: "Exploring the boundary conditions of the relationship between LMX and work engagement"
+author:
+- name: Mohammad Haris Minai
+  affiliation: Indian Institute of Management, Lucknow
+  email: mhminai@iiml.ac.in
+- name: Hemang Jauhari
+  affiliation: Indian Institute of Management, Lucknow
+  email: hemang.jauhari@iiml.ac.in
+- name: Shailendra Singh
+  affiliation: Indian Institute of Management, Lucknow
+  email: shail@iiml.ac.in
+#date: January, 2015
+tags: [LMX, leader-member exchange, UWES, Engagement, work engagement, Fit,
+person job fit, person organization fit, CSE, core self-evaluations]
+abstract: |
+    Keeping employees engaged is increasingly becoming indispensable for organizations. Usually the first level leader of an employee is charged with maintaining an employee and getting work of high order through him. Given the limited attentional resources at the disposal of the manager, this is a challenging task.
+
+    In this study we study the effect of building a high quality relationship with a subordinate and its impact on subordinate work engagement. Given that exchanges in the organization happen in a context. We also explore the contextual role of personal and organizational moderators on this relationship.
+
+    We collect cross sectional data from 277 employees in the Indian IT industry. Analysis by way of hierarchical moderated regression shows that core self-evaluations negatively moderate the relationship between LMX and work engagement. On the other hand value congruence with the organization conceptualized as P--O Fit positively moderates this relationship.
+
+    Impact on theory, practice are discussed as well as avenues for future research.
+
+bibliography: "references.bib"
+#lang: "english"
+csl: "aomr.csl"
+papersize: letter
+fontsize: 12pt
+#fontfamily: tgbonum    # Nice but very heavy bfseries scshape
+fontfamily: libertine    # Great font but slightly smaller pt size
+#fontfamily: tgpagella
+#fontfamily: DejaVuSerif  # Really good results but no SC
+#fontfamily: paratype # no sc
+geometry: margin=1in
+#use-own = TRUE -- If not using either koma or apa
+#documentclass: scrartcl
+#use-koma: TRUE
+linestretch: 1.5
+
+---
