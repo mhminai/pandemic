@@ -34,7 +34,7 @@ biblatex : $(FILE).pdc
 pdf : $(FILE).pdc
 	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) --template=$(TMPL_DIR)/$(LATTMPL) -o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
 
-docx: $(SRC_DIR)/$(FILE).pdc
+docx: $(FILE).pdc
 	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) --reference-docx=$(TMPL_DIR)/$(REFDOCX) -o $(OUT_DIR)/$(FILE).docx $(YAML_DIR)/$(YAML) $(FILE).pdc
 
 clean:
