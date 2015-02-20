@@ -11,8 +11,11 @@ abstract: |
 
     can have multiple paragraphs
 
-lang: american
 bibliography: "references.bib"
-csl: "./csl/apa.csl"
+linestretch: 2
+papersize: letter
+geometry: margin=1in
+fontfamily: txfonts
+fontsize: 12pt
 
 ---

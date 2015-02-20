@@ -4,13 +4,12 @@ YAML_DIR = yaml
 TMPL_DIR = templates
 INCL_DIR = includes
 FILE = paper
-LATTMPL = apa6template.latex
-#LATTMPL = dblapamy.latex
 BIBFILE = references.bib
 HD_INCL = after-header.tex
 BDB_INCL = before-body.tex
 BDA_INCL = before-body.tex
-# We need to create a apa.yaml
+LATTMPL = apa6template.latex
+#LATTMPL = aom-template.latex
 YAML = apa.yaml
 CSLFILE = apa.csl
 REFDOCX = apa_styles.docx
@@ -32,13 +31,10 @@ biblatex : $(FILE).pdc
 
 
 pdf : $(FILE).pdc
-	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) --template=$(TMPL_DIR)/$(LATTMPL) -o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
+	pandoc --filter pandoc-citeproc --template=$(TMPL_DIR)/$(LATTMPL) -o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
 
 docx: $(FILE).pdc
 	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) --reference-docx=$(TMPL_DIR)/$(REFDOCX) -o $(OUT_DIR)/$(FILE).docx $(YAML_DIR)/$(YAML) $(FILE).pdc
 
 clean:
-	cd $(OUT_DIR) && -$(RM) *.aux *.bbl *.bcf *.blg *.log *.run.xml *.ttt *.fls *.fdb_latexmk *.dvi *.out
-
-cleanall: clean
-	cd $(OUT_DIR) && -$(RM) *
+	-cd $(OUT_DIR) && $(RM) *.aux *.bbl *.bcf *.blg *.log *.run.xml *.ttt *.fls *.fdb_latexmk *.dvi *.out
