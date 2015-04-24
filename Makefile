@@ -1,47 +1,35 @@
-OUT_DIR = out
-CSL_DIR = csl
-YAML_DIR = yaml
-TMPL_DIR = templates
-INCL_DIR = includes
-FILE = paper
-BIBFILE = references.bib
-HD_INCL = after-header.tex
-BDB_INCL = before-body.tex
-BDA_INCL = after-body.tex
-LATTMPL = apa6template.latex
-#LATTMPL = aom-template.latex
-YAML = apa.yaml
-CSLFILE = apa.csl
-REFDOCX = apa_styles.docx
+PAPER = paper_example
+FORMAT = apa6
 RM = /bin/rm
 
 .PHONY: clean cleanall all
 
 all : biblatex pdf docx Makefile
 
-biblatex : $(FILE).pdc
-	pandoc -s --bibliography $(BIBFILE) --biblatex \
-		--template=$(TMPL_DIR)/$(LATTMPL) \
-		--include-in-header=$(INCL_DIR)/$(HD_INCL) \
-		--include-before-body=$(INCL_DIR)/$(BDB_INCL) \
-		--include-after-body=$(INCL_DIR)/$(BDA_INCL) -o $(OUT_DIR)/$(FILE).tex \
-		$(YAML_DIR)/$(YAML) $(FILE).pdc
-	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
-	biber --nolog --output-directory $(OUT_DIR) $(OUT_DIR)/$(FILE)
-	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
-	biber --nolog --output-directory $(OUT_DIR) $(OUT_DIR)/$(FILE)
-	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
+biblatex : $(PAPER)/paper.pdc
+	pandoc -s --bibliography $(PAPER)/references.bib --biblatex \
+		--template=templates/$(FORMAT).latex \
+		--include-in-header=$(PAPER)/includes/after-header.tex \
+		--include-before-body=$(PAPER)/includes/before-body.tex \
+		--include-after-body=$(PAPER)/includes/after-body.tex \
+		-o $(PAPER)/out/paper.tex \
+		yaml/$(FORMAT).yaml $(PAPER)/paper.pdc
+	pdflatex -output-directory=$(PAPER)/out $(PAPER)/out/paper.tex
+	biber --nolog --output-directory $(PAPER)/out $(PAPER)/out/paper
+	pdflatex -output-directory=$(PAPER)/out $(PAPER)/out/paper.tex
+	biber --nolog --output-directory $(PAPER)/out $(PAPER)/out/paper
+	pdflatex -output-directory=$(PAPER)/out $(PAPER)/out/paper.tex
 
 
-pdf : $(FILE).pdc
-	pandoc --filter pandoc-citeproc --template=$(TMPL_DIR)/$(LATTMPL) \
-		-o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
+pdf : $(PAPER)/paper.pdc
+	pandoc --bibliography $(PAPER)/references.bib --filter pandoc-citeproc \
+		--csl csl/$(FORMAT).csl --template=templates/$(FORMAT).latex \
+		-o $(PAPER)/out/paper_panonly.pdf yaml/$(FORMAT).yaml $(PAPER)/paper.pdc
 
-docx: $(FILE).pdc
-	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) \
-		--reference-docx=$(TMPL_DIR)/$(REFDOCX) -o $(OUT_DIR)/$(FILE).docx \
-		$(YAML_DIR)/$(YAML) $(FILE).pdc
+docx: $(PAPER)/paper.pdc
+	pandoc --bibliography=$(PAPER)/references.bib --csl=csl/$(FORMAT).csl \
+		--reference-docx=templates/$(FORMAT).docx -o $(PAPER)/out/paper.docx \
+		yaml/$(FORMAT).yaml $(PAPER)/paper.pdc
 
 clean:
-	-cd $(OUT_DIR) && $(RM) *.aux *.bbl *.bcf *.blg *.log *.run.xml *.ttt \
-		*.fls *.fdb_latexmk *.dvi *.out
+	-cd $(PAPER)/out && $(RM) *.aux *.bbl *.bcf *.log *.run.xml *.out

@@ -12,7 +12,5 @@ abstract: |
     can have multiple paragraphs
 
 lang: american
-bibliography: "references.bib"
-csl: "./csl/apa.csl"
 
 ---

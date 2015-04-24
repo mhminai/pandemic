@@ -1,5 +1,7 @@
 # PANDEMIC #
 
+***OUTDATED: Please note that currently this repository has been modified so that a new paper would be a submodule of this repository. This README needs to be updated. Shall do that as soon as I am able to get to it***
+
 [Pandoc](http://www.pandoc.org) is a fantastic utility for targeting multiple outputs which include .docx and .pdf. These two formats are probably most important for writing academic papers.
 
 Citation processing in pandoc is also excellent. We hope to leverage that and the simplistic markdown language itself.
