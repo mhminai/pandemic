@@ -20,21 +20,28 @@ RM = /bin/rm
 all : biblatex pdf docx Makefile
 
 biblatex : $(FILE).pdc
-	pandoc -s --bibliography $(BIBFILE) --biblatex --template=$(TMPL_DIR)/$(LATTMPL) \
-		--include-in-header=$(INCL_DIR)/$(HD_INCL) --include-before-body=$(INCL_DIR)/$(BDB_INCL) --include-after-body=$(INCL_DIR)/$(BDA_INCL) \
-		$(YAML_DIR)/$(YAML) -o $(OUT_DIR)/$(FILE).tex $(YAML_DIR)/$(YAML) $(FILE).pdc
-	pdflatex -output-directory=$(OUT_DIR) -aux-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
+	pandoc -s --bibliography $(BIBFILE) --biblatex \
+		--template=$(TMPL_DIR)/$(LATTMPL) \
+		--include-in-header=$(INCL_DIR)/$(HD_INCL) \
+		--include-before-body=$(INCL_DIR)/$(BDB_INCL) \
+		--include-after-body=$(INCL_DIR)/$(BDA_INCL) -o $(OUT_DIR)/$(FILE).tex \
+		$(YAML_DIR)/$(YAML) $(FILE).pdc
+	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
 	biber --nolog --output-directory $(OUT_DIR) $(OUT_DIR)/$(FILE)
-	pdflatex -output-directory=$(OUT_DIR) -aux-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
+	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
 	biber --nolog --output-directory $(OUT_DIR) $(OUT_DIR)/$(FILE)
-	pdflatex -output-directory=$(OUT_DIR) -aux-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
+	pdflatex -output-directory=$(OUT_DIR) $(OUT_DIR)/$(FILE).tex
 
 
 pdf : $(FILE).pdc
-	pandoc --filter pandoc-citeproc --template=$(TMPL_DIR)/$(LATTMPL) -o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
+	pandoc --filter pandoc-citeproc --template=$(TMPL_DIR)/$(LATTMPL) \
+		-o $(OUT_DIR)/$(FILE)_panonly.pdf $(YAML_DIR)/$(YAML) $(FILE).pdc
 
 docx: $(FILE).pdc
-	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) --reference-docx=$(TMPL_DIR)/$(REFDOCX) -o $(OUT_DIR)/$(FILE).docx $(YAML_DIR)/$(YAML) $(FILE).pdc
+	pandoc --bibliography=$(BIBFILE) --csl=$(CSL_DIR)/$(CSLFILE) \
+		--reference-docx=$(TMPL_DIR)/$(REFDOCX) -o $(OUT_DIR)/$(FILE).docx \
+		$(YAML_DIR)/$(YAML) $(FILE).pdc
 
 clean:
-	-cd $(OUT_DIR) && $(RM) *.aux *.bbl *.bcf *.blg *.log *.run.xml *.ttt *.fls *.fdb_latexmk *.dvi *.out
+	-cd $(OUT_DIR) && $(RM) *.aux *.bbl *.bcf *.blg *.log *.run.xml *.ttt \
+		*.fls *.fdb_latexmk *.dvi *.out
