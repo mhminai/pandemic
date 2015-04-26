@@ -1,0 +1,303 @@
+% set the following variables in YAML metadata
+% fontfamily: Libertine, tgbonum works
+% linestretch: 1.5
+% title-image = <filename of image to include on title page>
+% classoption = "man/jou", "floatsintext"
+% documentclass = apa6 -- This option does not work with this template. yet
+% documentclass = scrartcl works well with use-koma:1
+% lang = american
+% Following combination works
+%       documentclass:scartcl
+%       use-koma: TRUE
+%       title-image: <path to file to be placed on title page>
+%       papersize: a4paper
+%       fontsize: 12pt
+%       fontfamily: libertine
+%       geometry: margin=1in
+%       linestretch: 1.5
+%       lang: american
+%       
+
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+$if(fontfamily)$
+\usepackage{$fontfamily$}
+$else$
+\usepackage{lmodern}
+$endif$
+$if(linestretch)$
+\usepackage{setspace}
+\setstretch{$linestretch$}
+$endif$
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+% Changes
+\usepackage{multirow}
+\usepackage{mathtools}
+\usepackage{pdflscape}
+\usepackage[svgnames,table]{xcolor}
+$if(use-koma)$
+    \addtokomafont{disposition}{\rmfamily}
+    \addtokomafont{title}{\centering\bfseries\normalsize}
+    \addtokomafont{author}{\centering\bfseries\normalsize}
+    \addtokomafont{section}{\centering\bfseries\normalsize}
+    \addtokomafont{subsection}{\bfseries\normalsize}
+    \addtokomafont{subsubsection}{\indent\normalsize\itshape}
+$else$
+    \usepackage{fancyhdr}
+    \fancypagestyle{titlepage}{%
+      \lhead{}%
+       \rhead{\thepage}%
+    }
+
+    \usepackage{titlesec} % Allows customization of titles
+    \renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+    \renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+    \renewcommand\thesubsubsection{\Roman{subsubsection}} % Roman numerals for subsections
+    \titleformat{\section}[block]{\large\bfseries\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+    \titleformat{\subsection}[block]{\bfseries}{\thesubsection.}{1em}{} % Change the look of the section titles
+    \titleformat{\subsubsection}[runin]{\bfseries\itshape}{\thesubsubsection.}{1em}{}[.] % Change the look of the section titles
+    \titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-4pt plus 2pt minus 2pt}
+    \titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+    \titlespacing{\subsubsection}{\parindent}{12pt plus 4pt minus 2pt}{0.5em}
+$endif$
+
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\itshape} % Set the abstract itself to small italic text
+% Changes end
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+  \DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+\else % if luatex or xelatex
+  \ifxetex
+    %\usepackage{mathspec}  % Getting an error with generating pdf from pandoc
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+$if(mainfont)$
+    \setmainfont{$mainfont$}
+$endif$
+$if(sansfont)$
+    \setsansfont{$sansfont$}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi]{$monofont$}
+$endif$
+$if(mathfont)$
+    \setmathfont(Digits,Latin,Greek){$mathfont$}
+$endif$
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{csquotes}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[$lang$]{babel}
+\fi
+$endif$
+
+$if(biblatex)$
+\usepackage[url=false,style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{$lang$}{$lang$-apa}
+$if(biblio-files)$
+\bibliography{$biblio-files$}
+%\addbibresource{$biblio-files$} % This creates problems when bibfiles are nested in a folder
+$endif$
+$endif$
+
+$if(listings)$
+\usepackage{listings}
+$endif$
+
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+
+$if(tables)$
+    \usepackage{longtable}
+    \usepackage{booktabs}
+    \usepackage{threeparttable}
+    \usepackage{dcolumn}
+    \DeclareMathVersion{nxbold}
+    \SetSymbolFont{operators}{nxbold}{OT1}{cmr} {b}{n}
+    \SetSymbolFont{letters}  {nxbold}{OML}{cmm} {b}{it}
+    \SetSymbolFont{symbols}  {nxbold}{OMS}{cmsy}{b}{n}
+    \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+    \newcolumntype{.}{D{.}{\cdot}{2}}
+    \makeatletter
+    \newcolumntype{B}{>{\boldmath\DC@{.}{\cdot}{2}}c<{\DC@end}}
+    \newcolumntype{Z}{>{\mathversion{nxbold}\DC@{.}{\cdot}{2}}c<{\DC@end}}
+    \makeatother
+$endif$
+
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+%\setlength{\parskip}{15pt plus 6pt minus 3pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+% Changes we have moved the header-includes before the title, so that title customizations can happen here
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(title-image)$
+\titlehead{\includegraphics[width=2.5cm]{$title-image$}}
+$endif$
+
+% APA makes its own title this is given below in comments
+% \title{}
+% \author{}
+% \affiliation{}
+% \leftheader{} %This is set to the shorttitle text but could easily be substituted.
+% \shorttitle{}
+% \abstract{}
+% \keywords{}
+
+$if(title)$
+\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+$endif$
+$if(author)$
+%\author{$for(author)$ $author.name$\vspace{0.05in} \\ \emph{$author.affiliation$} \\ \url{$author.email$}\vspace*{0.2in} \\ $sep$ \and $endfor$}
+\author{$for(author)$ $author.name$ (\url{$author.email$}) \\ \emph{$author.affiliation$} \\ $sep$ \and $endfor$}
+$endif$
+
+\date{$date$}
+
+\begin{document}
+
+$if(title)$
+\maketitle
+$endif$
+
+$if(abstract)$
+\begin{abstract}
+    %\noindent
+    $abstract$
+\end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+
+
+$body$
+
+$if(workingpaper)$
+\newpage
+\noindent
+\vspace{-2em}
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\singlespacing
+$endif$
+
+$if(biblatex)$
+\printbibliography[$if(biblio-title)$title=$biblio-title$$endif$]
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
