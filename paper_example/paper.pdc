@@ -1,3 +1,15 @@
+---
+title: "Overridden title"
+author:
+- name: Author 1
+  affiliation: Affiliation 1
+  email: author1@email.com
+- name: Author 2
+  affiliation: Affiliation 2
+  email: author2@email.com
+
+---
+
 # Introduction
 
 Employee engagement is getting increasing traction due to the dynamic nature of the environment faced by organizations nowadays, @Shuck2011 opines that "... engaging employees no matter the industry has become a strategic imperative ..."(p.317). @Bakker2010 and stress that the full capabilities of employees need to be brought to bear if organizations are to compete in the current environment. Its impact on financial performance at the business unit level has been demonstrated, and validated in at least one diary study.
