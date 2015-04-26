@@ -1,30 +1,23 @@
 ---
-title: "Exploring the boundary conditions of the relationship between LMX and work engagement"
+title: "Fantastic Paper to write"
 author:
-- name: Mohammad Haris Minai
-  affiliation: Indian Institute of Management, Lucknow
-  email: mhminai@iiml.ac.in
-- name: Hemang Jauhari
-  affiliation: Indian Institute of Management, Lucknow
-  email: hemang.jauhari@iiml.ac.in
-- name: Shailendra Singh
-  affiliation: Indian Institute of Management, Lucknow
-  email: shail@iiml.ac.in
+- name: Author 1
+  affiliation: Affiliation 1
+  email: author1@email.com
+- name: Author 2
+  affiliation: Affiliation 2
+  email: author2@email.com
+- name: Author 3
+  affiliation: Affiliation 3
+  email: author3@email.com
 #date: January, 2015
-tags: [LMX, leader-member exchange, UWES, Engagement, work engagement, Fit,
-person job fit, person organization fit, CSE, core self-evaluations]
+tags: [keyword1, keyword2, keyword3]
 abstract: |
-    Keeping employees engaged is increasingly becoming indispensable for organizations. Usually the first level leader of an employee is charged with maintaining an employee and getting work of high order through him. Given the limited attentional resources at the disposal of the manager, this is a challenging task.
+    This is the abstract. It tells us something about the paper and
 
-    In this study we study the effect of building a high quality relationship with a subordinate and its impact on subordinate work engagement. Given that exchanges in the organization happen in a context. We also explore the contextual role of personal and organizational moderators on this relationship.
+    can have multiple paragraphs
 
-    We collect cross sectional data from 277 employees in the Indian IT industry. Analysis by way of hierarchical moderated regression shows that core self-evaluations negatively moderate the relationship between LMX and work engagement. On the other hand value congruence with the organization conceptualized as P--O Fit positively moderates this relationship.
-
-    Impact on theory, practice are discussed as well as avenues for future research.
-
-bibliography: "references.bib"
 #lang: "english"
-csl: "aomr.csl"
 papersize: letter
 fontsize: 12pt
 #fontfamily: tgbonum    # Nice but very heavy bfseries scshape

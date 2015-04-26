@@ -2,8 +2,6 @@
 title: "This is a Title of the fantastic paper that we are going to write"
 author: Author1
 affiliation: Affiliation1
-documentclass: apa6
-classoption: [jou, floatsintext]
 shorttitle: "Short title for the paper"
 keywords: "keyword1, keyword2, keyword3"
 abstract: |
@@ -11,7 +9,6 @@ abstract: |
 
     can have multiple paragraphs
 
-bibliography: "references.bib"
 linestretch: 2
 papersize: letter
 geometry: margin=1in
