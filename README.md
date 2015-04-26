@@ -6,6 +6,8 @@
 
 Citation processing in pandoc is also excellent. We hope to leverage that and the simplistic markdown language itself.
 
+Currently we have support for AOM and APA style papers
+
 ### What is this repository for? ###
 
 * CSLs, LATEX and .docx templates for journals in the management area
