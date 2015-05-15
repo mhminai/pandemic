@@ -1,6 +1,7 @@
 ---
 documentclass: apa6
 classoption: [man, floatsintext]
+fontsize: 12pt
 lang: american
 
 ---

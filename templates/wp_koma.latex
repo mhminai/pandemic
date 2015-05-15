@@ -71,6 +71,8 @@
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
+\graphicspath{{../figures/}}
+
 \usepackage[unicode=true]{hyperref}
 \hypersetup{breaklinks=true,
             %bookmarks=true,
@@ -163,7 +165,7 @@
 \vfill
 \begin{minipage}[c]{0.50\linewidth}
     \begin{flushleft}
-        \includegraphics[width=2.5cm]{figures/iiml-logo}\\
+        \includegraphics[width=2.5cm]{iiml-logo}\\
     \end{flushleft}
 \end{minipage}
 \begin{minipage}{0.50\linewidth}

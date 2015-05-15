@@ -50,4 +50,4 @@ clean:
 	-cd $(PAPER)/out && $(RM) *.aux *.bbl *.bcf *.log *.run.xml *.out
 
 cleanall:
-	-cd out && $(RM) *
+	-cd $(PAPER)/out && $(RM) *
