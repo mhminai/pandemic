@@ -5,13 +5,7 @@
 %% other classoptions are specified in list format in YAML
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$babel,$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
-%\usepackage[american]{babel}
-%\usepackage{multirow}
-%\usepackage{mathtools}
-%\usepackage{color}
-%\input{rgb}
 \usepackage{amssymb,amsmath}
-%\usepackage{fancyhdr}
 
 \usepackage{csquotes}
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
@@ -22,6 +16,20 @@
 %  \lhead{$shorttitle$}%
 %  \rhead{\thepage}%
 %}
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
 
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
@@ -47,12 +55,11 @@
 
 \title{$title$}
 
-\author{$author$}
+\author{$for(author)$ $author.name$ $sep$ \and $endfor$}
 
-%$affiliations$
-\affiliation{$affiliation$}			
+\affiliation{$for(author)$ $author.affiliation$ $sep$ \and $endfor$}
 
-%\leftheader{$shorttitle$} %This is set to the shorttitle text but could easily be substituted.
+\leftheader{$author.name$} %This is set to the shorttitle text but could easily be substituted.
 
 \shorttitle{$shorttitle$}
 

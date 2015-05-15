@@ -1,0 +1,212 @@
+%\documentclass[12pt,american,titlepage,abstract=yes,twoside=yes,headsepline=yes,footsepline=yes,BCOR=8.25mm]{scrreprt}
+\documentclass[12pt,american,titlepage,abstract=yes,twoside=yes,headsepline=yes,footsepline=yes,BCOR=8.25mm]{scrreprt}
+\usepackage{libertine}
+%\usepackage{setspace}
+%\setstretch{1.5}
+%\usepackage{amssymb,amsmath}
+\usepackage{fixltx2e} % provides \textsubscript
+
+%\usepackage{multirow}
+%\usepackage{mathtools}
+%\usepackage{pdflscape}
+\usepackage[svgnames,table]{xcolor}
+
+%\addtokomafont{disposition}{\rmfamily}
+%\addtokomafont{title}{\centering\bfseries\scshape\Large}
+%\addtokomafont{author}{\centering\bfseries\normalsize}
+%\addtokomafont{section}{\centering\bfseries\scshape\large}
+%\addtokomafont{subsection}{\bfseries\normalsize}
+%\addtokomafont{subsubsection}{\indent\normalsize\itshape}
+
+%\usepackage{abstract} % Allows abstract customization
+%\renewcommand{\abstractnamefont}{\bfseries\scshape\large} % Set the "Abstract" text to bold
+%\renewcommand{\abstracttextfont}{\normalfont\itshape} % Set the abstract itself to small italic text
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{csquotes}
+
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+    \usepackage{microtype}
+    \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+%\usepackage[margin=1in]{geometry}
+
+\usepackage[american]{babel}
+
+\usepackage[url=false,style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+
+\bibliography{$biblio-files$}
+
+\usepackage{longtable}
+\usepackage{booktabs}
+%\usepackage{threeparttable}
+%\usepackage{dcolumn}
+%\DeclareMathVersion{nxbold}
+%\SetSymbolFont{operators}{nxbold}{OT1}{cmr} {b}{n}
+%\SetSymbolFont{letters}  {nxbold}{OML}{cmm} {b}{it}
+%\SetSymbolFont{symbols}  {nxbold}{OMS}{cmsy}{b}{n}
+%\newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+%\newcolumntype{.}{D{.}{\cdot}{2}}
+%\makeatletter
+%\newcolumntype{B}{>{\boldmath\DC@{.}{\cdot}{2}}c<{\DC@end}}
+%\newcolumntype{Z}{>{\mathversion{nxbold}\DC@{.}{\cdot}{2}}c<{\DC@end}}
+%\makeatother
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage[unicode=true]{hyperref}
+\hypersetup{breaklinks=true,
+            %bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            citecolor=Maroon,
+            urlcolor=NavyBlue,
+            linkcolor=Magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+\setcounter{secnumdepth}{0}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+%\usepackage{fancyhdr} % Headers and footers
+%\pagestyle{fancy} % All pages have headers and footers
+%\fancyhead{}
+%\fancyfoot{} % Blank out the default footer
+%\fancyhead[R]{\textbf{$wp_num$}}
+%\fancyfoot[C]{\thepage} % Custom footer text
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{headings}
+
+\begin{document}
+%%\extratitle{\textbf{\Huge Oh Yes!}}
+%\titlehead{\hfill $wp_num$\\}
+%\subject{Working Paper
+%\begin{tikzpicture} [overlay,remember picture]
+%       \draw [line width=0.5mm ] 
+%       % Using double $$ below as pandoc gets rid of one of them
+%        ($$ (current page.north west) + (1.2cm, -1.2cm) $$)
+%        rectangle
+%        ($$ (current page.south east) + (-1.2cm, 1.2cm) $$);
+%\end{tikzpicture}
+%}
+%\title{$$title$$}
+%\subtitle{$subtitle$\vspace{2cm}}
+%\author{$for(author)$ $author.name$ \\ {\small(\url{$author.email$})} \\ \emph{$author.affiliation$} \\ $sep$ \and $endfor$}
+%$if(date)$
+%\date{$date$}
+%$else$
+%\date{}
+%$endif$
+%\publishers{
+%\vfill
+%\begin{minipage}[c]{0.50\linewidth}
+%    \begin{flushleft}
+%        \includegraphics[width=2.5cm]{iiml-logo}\\
+%    \end{flushleft}
+%\end{minipage}
+%\begin{minipage}{0.50\linewidth}
+%    \begin{flushright}
+%        Indian Institute of Management \\
+%        Prabandh Nagar \\
+%        Lucknow (U.P.)  -- 226013\\
+%        India \\
+%    \end{flushright}
+%\end{minipage}
+%}
+%%\lowertitleback{Typeset with help of \KOMAScript and \LaTeX}
+%%\uppertitleback{Jhingala till death}
+%%\dedication{Without several people this would not have been possible}
+%\maketitle
+\begin{tikzpicture} [overlay,remember picture]
+       \draw [line width=0.5mm ] 
+       % Using double $$ below as pandoc gets rid of one of them
+        ($$ (current page.north west) + (1.2cm, -1.2cm) $$)
+        rectangle
+        ($$ (current page.south east) + (-1.2cm, 1.2cm) $$);
+\end{tikzpicture}
+\thispagestyle{empty}
+\vspace{-2.5\baselineskip}
+\begin{flushright}\textsc{$wp_num$}\end{flushright}
+\vspace{2\baselineskip}
+\begin{center}
+    {\large\MakeUppercase{\textbf{$title$}}\par}
+    $if(subtitle)$\textit{$subtitle$}$endif$
+\end{center}
+\begin{center}
+    \vspace*{1\baselineskip}
+    $for(author)$ {\Large\textsc{$author.name$}\par} {\small\url{$author.email$}\par}
+        {\large\textsl{$author.affiliation$}} \\ \vspace*{1\baselineskip} $endfor$
+\end{center}
+\vfill
+\begin{minipage}[c]{0.50\linewidth}
+    \begin{flushleft}
+        \includegraphics[width=2.5cm]{figures/iiml-logo}\\
+    \end{flushleft}
+\end{minipage}
+\begin{minipage}{0.50\linewidth}
+    \begin{flushright}
+        Indian Institute of Management \\
+        Prabandh Nagar \\
+        Lucknow (U.P.)  -- 226013\\
+        India \\
+    \end{flushright}
+\end{minipage}
+\clearpage
+
+\begin{abstract}
+    $abstract$
+\end{abstract}
+
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+
+$if(lot)$
+\listoftables
+$endif$
+
+$if(lof)$
+\listoffigures
+$endif$
+
+\clearpage
+
+$body$
+
+%\newpage
+%\noindent
+%\vspace{-2em}
+%\setlength{\parindent}{-0.2in}
+%\setlength{\leftskip}{0.2in}
+%\setlength{\parskip}{8pt}
+
+\printbibliography[$if(biblio-title)$title=$biblio-title$$endif$]
+
+\end{document}

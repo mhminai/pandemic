@@ -1,0 +1,182 @@
+\documentclass[a4paper, oneside, 12pt, article]{memoir}
+\usepackage[american]{babel}
+\usepackage{libertine}
+
+%\setlrmarginsandblock{40mm}{25mm}{*}
+%\setlxvchars \setxlvchars[\small\sffamily]
+%\checkandfixthelayout
+%\fixpdflayout
+
+\usepackage[final, babel=true]{microtype}
+\usepackage{amsmath} % amsmath which also loads fonts?
+
+\renewcommand{\and}{\, }
+\renewcommand*{\andnext}{%
+  \\\medskip }
+
+\makechapterstyle{article-4}{
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand{\printchaptername}{} 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{\chaptitlefont} 
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\afterchapternum}{} 
+  \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape} 
+  %\renewcommand{\cftchapterleader}{} 
+  %\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  %\settocdepth{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{chapter}
+
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  %\renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+
+  % % Title flush left
+   \pretitle{\begin{flushright}\textbf{$wp_num$} \\ \end{flushright} \begin{flushleft}\LARGE\bfseries}
+   \posttitle{\end{flushleft}\par\vskip 0.5em}
+   \preauthor{\begin{flushleft}\normalsize\bigskip}
+   \postauthor{\end{flushleft}}
+   \predate{\vspace*{0cm}\begin{center}\large}
+   \postdate{\end{center}\vspace*{0cm}}
+
+  % 'abstract' bigger skip from title
+  %\addto\captionsamerican{\renewcommand{\abstractname}{}}
+  %\renewcommand{\abstractname}{}
+  \renewcommand{\abstracttextfont}{\slshape\footnotesize}
+  %\abstractrunin
+}
+
+
+\makepagestyle{mhm}
+\makeheadrule{mhm}{\textwidth}{\normalrulethickness}
+\makefootrule{mhm}{\textwidth}{\normalrulethickness}{\footruleskip}
+%\makefootrule{mhm}{}{}
+\makeevenfoot{mhm}{\thepage}{}{}
+\makeoddfoot{mhm}{}{}{\thepage}
+\makeevenhead{mhm}{$wp_num$}{}{}
+\makeoddhead{mhm}{}{}{$wp_num$}
+
+
+\usepackage[svgnames,table]{xcolor}
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{csquotes}
+
+\usepackage[url=false,style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+
+\bibliography{references}
+
+\usepackage{longtable}
+%\usepackage{booktabs}
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage[unicode=true]{hyperref}
+\hypersetup{breaklinks=true,
+            %bookmarks=true,
+            pdfauthor={},
+            pdftitle={Strength of Organizational Culture, Innovative Work Behaviors and Fit: A Relational Analysis},
+            colorlinks=true,
+            citecolor=Maroon,
+            urlcolor=NavyBlue,
+            linkcolor=Magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+\setcounter{secnumdepth}{0}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+\title{$title$}
+
+\author{$for(author)$\Large $author.name$ \\
+    \large\emph{$author.affiliation$} \vspace*{0.1in} \\
+    \normalsize\url{$author.email$}\vspace*{0.2in} \\
+    $sep$ \and $endfor$}
+
+\date{\textsc{$date$}}
+
+
+\begin{document}  
+\setkeys{Gin}{width=1\textwidth} 	
+\chapterstyle{article-4} 
+\begin{titlingpage}
+\copypagestyle{titlingpage}{empty}
+\setlength{\droptitle}{-6\baselineskip}
+\maketitle
+\begin{tikzpicture} [overlay,remember picture]
+       \draw [line width=0.5mm ] 
+       % Using double $$ below as pandoc gets rid of one of them
+        ($$ (current page.north west) + (1.2cm, -1.2cm) $$)
+        rectangle
+        ($$ (current page.south east) + (-1.2cm, 1.2cm) $$);
+\end{tikzpicture}
+\vfill
+\begin{minipage}[c]{0.48\textwidth}
+    \begin{flushleft}
+        \includegraphics[width=2.5cm]{figures/iiml-logo}\\
+    \end{flushleft}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+    \begin{flushright}
+        Indian Institute of Management \\
+        Prabandh Nagar \\
+        Lucknow (U.P.)  -- 226013\\
+        India \\
+    \end{flushright}
+\end{minipage}
+\end{titlingpage}
+
+\pagestyle{mhm}
+
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+
+\begin{flushleft}\LARGE\bfseries\thetitle\end{flushleft}\par\vskip 0.5em
+\bigskip
+\bigskip
+\begin{abstract}
+\noindent
+$abstract$
+\end{abstract}
+\bigskip
+{\par \textbf{keywords:}$for(keywords)$ $keywords$$sep$, $endfor$}
+\vfill
+{\par }
+$body$
+
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=References]
+$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
