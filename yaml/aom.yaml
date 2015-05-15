@@ -1,18 +1,9 @@
 ---
-title: "This is a Title of the fantastic paper that we are going to write"
-author: Author1
-affiliation: Affiliation1
-shorttitle: "Short title for the paper"
-keywords: "keyword1, keyword2, keyword3"
-abstract: |
-    This is the abstract. It tells us something about the paper and
-
-    can have multiple paragraphs
-
-linestretch: 2
 papersize: letter
-geometry: margin=1in
-fontfamily: txfonts
 fontsize: 12pt
+fontfamily: tgtermes
+geometry: margin=1in
+linestretch: 2
+lang: american
 
 ---
