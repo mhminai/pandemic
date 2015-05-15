@@ -1,18 +1,15 @@
 ---
-title: "Overridden title"
+title: "Our very own extensive title"
 author:
 - name: Author 1
   affiliation: Affiliation 1
   email: author1@email.com
-- name: Author 2
-  affiliation: Affiliation 2
-  email: author2@email.com
 shorttitle: "Shorttitle of paper"
+leftheader: "WPS 2014-15/12"
+title-image: "figures/iiml-logo"
 keywords: [keyword1, keyword2, keyword3]
 abstract: |
-    This is the abstract of the paper. It contains lots of stuff and can also contain multiple paragraphs
-
-    This is the second paragraph of the paper.
+    This is the abstract of the paper. It contains lots of stuff and can also contain multiple paragraphs. This is not the second paragraph of the paper.
 
 ---
 
