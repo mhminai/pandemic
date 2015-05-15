@@ -7,6 +7,12 @@ author:
 - name: Author 2
   affiliation: Affiliation 2
   email: author2@email.com
+shorttitle: "Shorttitle of paper"
+keywords: [keyword1, keyword2, keyword3]
+abstract: |
+    This is the abstract of the paper. It contains lots of stuff and can also contain multiple paragraphs
+
+    This is the second paragraph of the paper.
 
 ---
 
