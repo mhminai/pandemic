@@ -88,7 +88,7 @@
 \makeatother
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
-\graphicspath{{../figures/}}
+%\graphicspath{{./paper_example/}}
 
 \usepackage[unicode=true]{hyperref}
 \hypersetup{breaklinks=true,
@@ -135,7 +135,7 @@
 \vfill
 \begin{minipage}[c]{0.48\textwidth}
     \begin{flushleft}
-        \includegraphics[width=2.5cm]{iiml-logo}\\
+        \includegraphics[width=2.5cm]{$title-image$}\\
     \end{flushleft}
 \end{minipage}
 \begin{minipage}{0.48\textwidth}
